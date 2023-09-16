@@ -8,20 +8,18 @@ namespace Lab._2._3
     {
         static void Main(string[] args)
         {
-            byte[] encryptedMessage = File.ReadAllBytes("D:/Навчання/інформаційна безпека лаби/Lab2/lab2.3/encfile.dat");
-            int lenght = encryptedMessage.Length;
+            byte[] encryptedMessage = File.ReadAllBytes("./encfile.dat");
             string data = Encoding.UTF8.GetString(encryptedMessage);
-            //Console.WriteLine(data);
-            int i1 = data.IndexOf("Mit21");
+            Console.WriteLine(data);
             FindKey(data);
         }
         static void FindKey(string data)
         {
-            string sumbols = "opasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
+            string sumbols = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()_+=-{}[];:'><,./*|?";
             int i1;
             string key = "";
             string decData;
-            foreach (char c1 in "yuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM")
+            foreach (char c1 in sumbols)
             {
                 key += c1;
                 foreach (char c2 in sumbols)
@@ -38,15 +36,12 @@ namespace Lab._2._3
                                 key += c5;
                                 decData = Coding(data, key);
                                 i1 = decData.IndexOf("Mit21");
-                                if (i1 != -1)
+                                if (!(i1 == -1))
                                 {
                                     Console.Write("key: ");
                                     Console.WriteLine(key);
-                                    Console.Write("Message: ");
+                                    Console.WriteLine("Message: ");
                                     Console.WriteLine(decData);
-                                    Console.ReadLine();
-                                    //SaveData(key, "D:\\Навчання\\інформаційна безпека лаби\\Lab2\\lab2.3\\answers.txt");
-                                    //SaveData(data, "D:\\Навчання\\інформаційна безпека лаби\\Lab2\\lab2.3\\answers.txt");
                                     //return;
                                 }
                                 //Console.WriteLine(key);
@@ -72,13 +67,6 @@ namespace Lab._2._3
                 encryptedMessage[i] = (byte)(bData[i] ^ Bkey[i % Bkey.Length]);
             }
             return Encoding.UTF8.GetString(encryptedMessage);
-        }
-        static void SaveData(string path, string data) 
-        {
-            using (StreamWriter writer = new StreamWriter(path)) 
-            { 
-                writer.Write(data);
-            }
         }
     }
 }

@@ -14,11 +14,11 @@ namespace Lab._2._1
 
 
             string key = "key";
-            string decdata = Coding(data, key);
-            Console.WriteLine(Coding(data, key));
-            Console.WriteLine(Coding(decdata, key));
+            string decdata = Cryption(data, key);
+            Console.WriteLine(Cryption(data, key));
+            Console.WriteLine(Cryption(decdata, key));
         }
-        static string Coding(string data, string key)
+        static string Cryption(string data, string key)
         {
 
             byte[] Bkey = Encoding.UTF8.GetBytes(key);
