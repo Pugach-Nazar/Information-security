@@ -16,7 +16,7 @@ namespace Lab._2._1
             //string decdata = Cryption(data, key);
             //Console.WriteLine(Cryption(data, key));
             //Console.WriteLine(Cryption(decdata, key));
-            string encData,key, data = ReadDataFromFile("./data.txt");
+            string decData,encData,key, data = ReadDataFromFile("./data.txt");
             Console.WriteLine(data);
 
             //Console.Write("Input key:");
@@ -26,9 +26,10 @@ namespace Lab._2._1
 
             encData = Cryption(data,key);
 
-            WriteDataInFile(encData, "./encData.dat");
             Console.WriteLine(ReadDataFromFile("./encData.dat"));
-            Console.WriteLine(Cryption(ReadDataFromFile("./encData.dat"),key));
+            WriteDataInFile(encData, "./encData.dat");
+            decData = Cryption(ReadDataFromFile("./encData.dat"), key);
+            Console.WriteLine(decData);
         }
 
         static string ReadDataFromFile(string path) 
