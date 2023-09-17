@@ -9,20 +9,11 @@ namespace Lab._2._1
 
         static void Main(string[] args)
         {
-            //Console.WriteLine("Input data");
-            //string data = Console.ReadLine();
-            //Console.WriteLine(data);
-            //string key = "key";
-            //string decdata = Cryption(data, key);
-            //Console.WriteLine(Cryption(data, key));
-            //Console.WriteLine(Cryption(decdata, key));
             string decData,encData,key, data = ReadDataFromFile("./data.txt");
             Console.WriteLine(data);
 
-            //Console.Write("Input key:");
-            //key = Console.ReadLine();
-
-            key = "123";
+            Console.Write("Input key:");
+            key = Console.ReadLine();
 
             encData = Cryption(data,key);
 
