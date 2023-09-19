@@ -12,7 +12,7 @@ namespace Lab._2._1
             string decData,encData,key, data = ReadDataFromFile("./data.txt");
             Console.WriteLine(data);
 
-            Console.Write("Input key:");
+            Console.Write("введіть ключ:");
             key = Console.ReadLine();
 
             encData = Cryption(data,key);
@@ -30,10 +30,8 @@ namespace Lab._2._1
         }
         static void WriteDataInFile(string data, string path)
         {
-            using (StreamWriter writer = new StreamWriter(path)) 
-            {
-                writer.WriteLine(data);
-            }
+            byte[] bData = Encoding.UTF8.GetBytes(data);
+            File.WriteAllBytes(path, bData);
         }
         
         static string Cryption(string data, string key = "key")
