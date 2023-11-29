@@ -19,22 +19,6 @@ namespace lab7._2
             }
         }
 
-        const string ContainerName = "MyContainer";
-        public void AssignNewKey()
-        {
-            CspParameters cspParams = new CspParameters(1)
-            {
-                KeyContainerName = ContainerName,
-                Flags = CspProviderFlags.UseMachineKeyStore,
-                ProviderName = "Microsoft Strong Cryptographic Provider"
-            };
-            var rsa = new RSACryptoServiceProvider(cspParams)
-            {
-                PersistKeyInCsp = true
-            };
-            File.WriteAllText("./Pugach_Nazar_publicKey.xml", rsa.ToXmlString(false));
-        }
-
         public byte[] EncryptData(string publicKeyPath, byte[] dataToEncrypt)
         {
             byte[] cipherbytes;
